@@ -37,5 +37,14 @@ namespace FallingStar.Station
             }
         }
 
+        public void Reapair(float amount)
+        {
+            if (amount <= 0f) return;
+            if (CurrentIntegrity <= 0f) return;
+
+            CurrentIntegrity = Mathf.Min(maxIntegrity, CurrentIntegrity + amount);
+            OnIntegrityChanged?.Invoke(CurrentIntegrity, maxIntegrity);
+        }
+
     }
 }

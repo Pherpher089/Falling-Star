@@ -212,6 +212,7 @@ GameObject:
   - component: {fileID: 138279430}
   - component: {fileID: 138279429}
   - component: {fileID: 138279428}
+  - component: {fileID: 138279434}
   m_Layer: 0
   m_Name: Ship
   m_TagString: PlayerShip
@@ -357,6 +358,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &138279434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138279427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48e6e7cd0f054f045b8cb3710d705b8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FallingStar.Expedition.ScrapInventory
 --- !u!1 &454917891
 GameObject:
   m_ObjectHideFlags: 0
@@ -651,6 +664,7 @@ GameObject:
   - component: {fileID: 544511842}
   - component: {fileID: 544511846}
   - component: {fileID: 544511847}
+  - component: {fileID: 544511848}
   m_Layer: 0
   m_Name: StationCore
   m_TagString: Untagged
@@ -777,6 +791,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65e5bea24d120084ab2bf6521efd2fed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StationDeathHandler
+--- !u!114 &544511848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544511841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49b78334460ee8b44b0684b6d7ba40b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FallingStar.Station.StationStorage
 --- !u!1 &808533427
 GameObject:
   m_ObjectHideFlags: 0
@@ -980,6 +1006,8 @@ MonoBehaviour:
   hudText: {fileID: 808533428}
   starPressure: {fileID: 1585949360}
   stationIntegrity: {fileID: 544511846}
+  scrapInventory: {fileID: 138279434}
+  stationStorage: {fileID: 544511848}
 --- !u!114 &1129980986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1074,6 +1102,9 @@ GameObject:
   - component: {fileID: 1543742622}
   - component: {fileID: 1543742621}
   - component: {fileID: 1543742620}
+  - component: {fileID: 1543742623}
+  - component: {fileID: 1543742624}
+  - component: {fileID: 1543742625}
   m_Layer: 0
   m_Name: DockRing
   m_TagString: Untagged
@@ -1147,12 +1178,58 @@ Transform:
   m_GameObject: {fileID: 1543742618}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0.6666667}
-  m_LocalScale: {x: 0.4, y: 1, z: 0.6000001}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0.6}
+  m_LocalScale: {x: 0.4, y: 1, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 544511845}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1543742623
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543742618}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.56
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1543742624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543742618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0785a5bd283298a42a65667175ac4cac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FallingStar.Station.DockZoneDeposit
+  stationStorage: {fileID: 544511848}
+--- !u!114 &1543742625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543742618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b59f030c3fdbc40aaf96c40c08310c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FallingStar.Station.StationDocking
 --- !u!1 &1585949352
 GameObject:
   m_ObjectHideFlags: 0
@@ -1432,6 +1509,67 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &949655217826656711
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1631795117428181576, guid: b010f2eb8b5d3324aba075da66525774, type: 3}
+      propertyPath: m_Name
+      value: Asteroid
+      objectReference: {fileID: 0}
+    - target: {fileID: 5530524619497546337, guid: b010f2eb8b5d3324aba075da66525774, type: 3}
+      propertyPath: ship
+      value: 
+      objectReference: {fileID: 138279433}
+    - target: {fileID: 7141344486182115860, guid: b010f2eb8b5d3324aba075da66525774, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -12.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7141344486182115860, guid: b010f2eb8b5d3324aba075da66525774, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7141344486182115860, guid: b010f2eb8b5d3324aba075da66525774, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 54.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7141344486182115860, guid: b010f2eb8b5d3324aba075da66525774, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7141344486182115860, guid: b010f2eb8b5d3324aba075da66525774, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7141344486182115860, guid: b010f2eb8b5d3324aba075da66525774, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7141344486182115860, guid: b010f2eb8b5d3324aba075da66525774, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7141344486182115860, guid: b010f2eb8b5d3324aba075da66525774, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7141344486182115860, guid: b010f2eb8b5d3324aba075da66525774, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7141344486182115860, guid: b010f2eb8b5d3324aba075da66525774, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b010f2eb8b5d3324aba075da66525774, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1446,3 +1584,4 @@ SceneRoots:
   - {fileID: 1694874525}
   - {fileID: 1129980989}
   - {fileID: 33394307}
+  - {fileID: 949655217826656711}
