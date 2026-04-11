@@ -83,3 +83,7 @@ This project was developed as a solo prototype to explore system design in a rog
 ## Repo
 
 https://github.com/Pherpher089/Falling-Star
+
+## Play-test
+
+https://chris-tutor.itch.io/falling-star-prototype
