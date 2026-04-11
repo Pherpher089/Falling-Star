@@ -69,5 +69,13 @@ namespace FallingStar.Systems
             hasMaxed = false;
             OnPressureChanged?.Invoke(CurrentPressure, maxPressure);
         }
+
+        public void MultiplyPressureRate(float multiplyer)
+        {
+            if (multiplyer <= 0f)
+            {
+                pressurePerSecond *= multiplyer;
+            }
+        }
     }
 }

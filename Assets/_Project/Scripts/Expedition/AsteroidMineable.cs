@@ -18,6 +18,10 @@ namespace FallingStar.Expedition
         [SerializeField] private GameObject scrapPickupPrefab;
 
         private bool mined;
+        private void Start()
+        {
+            ship = GameObject.FindGameObjectWithTag("PlayerShip").transform;
+        }
 
         private void Update()
         {
@@ -31,7 +35,7 @@ namespace FallingStar.Expedition
             if (scrapPickupPrefab == null) return;
 
             float dist = Vector3.Distance(ship.position, transform.position);
-            if (dist < interactRange) return;
+            if (dist > interactRange) return;
 
             Mine();
         }
@@ -49,7 +53,8 @@ namespace FallingStar.Expedition
 
                 Vector3 spawnPos = transform.position + offest;
 
-                Instantiate(scrapPickupPrefab, spawnPos, Quaternion.identity);
+                Transform parent = ExpeditionRuntimeContext.FieldRoot;
+                Instantiate(scrapPickupPrefab, spawnPos, Quaternion.identity, parent);
             }
 
             // For prototype: destroy asteroid when mined/

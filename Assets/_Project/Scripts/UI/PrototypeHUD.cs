@@ -2,10 +2,11 @@ using FallingStar.Expedition;
 using FallingStar.GameStates;
 using FallingStar.Station;
 using FallingStar.Systems;
+using FallingStar.Run;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-
+using FallingStar.Ship;
+using System;
 
 namespace FallingStar.UI
 {
@@ -24,6 +25,9 @@ namespace FallingStar.UI
         [SerializeField] private StationStorage stationStorage;
         [SerializeField] private StationAutoRepair stationAutoRepair;
         [SerializeField] private StationDocking stationDocking;
+        [SerializeField] private ShipHealth shipHealth;
+        [SerializeField] private CryoPodManager cryoPods;
+        [SerializeField] private RunProgress runProgress;
         private void Update()
         {
             if (hudText == null)
@@ -51,6 +55,7 @@ namespace FallingStar.UI
             {
                 stationStorageLine = $"STATION SCRAP: {stationStorage.ScrapStored}";
             }
+
 
             string starLine = "";
             if (starPressure != null)
@@ -81,16 +86,40 @@ namespace FallingStar.UI
                 autoRepairLine = "AUTO REPAIR (T): " + (stationAutoRepair.AutpRepairEnabled ? "ON" : "OFF");
             }
 
+            string shipHpLine = "";
+            if (shipHealth != null)
+            {
+                int curHp = Mathf.CeilToInt(shipHealth.CurrentHealth);
+                int maxHp = Mathf.CeilToInt(shipHealth.MaxHealth);
+
+                shipHpLine = $"SHIP HP: {curHp}/{maxHp}";
+            }
+
+            string podsLine = "";
+            if (cryoPods != null)
+            {
+                podsLine = $"PODS: {cryoPods.PodsRemaining}";
+            }
+
+            string starIndexLine = "";
+            if (runProgress != null)
+            {
+                starIndexLine = $"STAR: {runProgress.StartIndex}";
+            }
+
             if (gsm.CurrentState == GameStateId.Station)
             {
                 hudText.text = stateLine + "\n" +
                 "TAB: Launch\n" +
-                autoRepairLine + "\n" +
-                dockingLine + "\n" +
+                "J: Jump to new star\n" +
+                starIndexLine + "\n" +
                 starLine + "\n" +
+                autoRepairLine + "\n" +
                 integrityLine + "\n" +
+                stationStorageLine + "\n" +
                 scrapLine + "\n" +
-                stationStorageLine + "\n";
+                dockingLine + "\n" +
+                podsLine + "\n";
                 return;
             }
 
@@ -101,12 +130,15 @@ namespace FallingStar.UI
                 "SPACE: Break\n" +
                 "E: Mine asteroid\n" +
                 "R: Return to station\n" +
+                starIndexLine + "\n" +
                 starLine + "\n" +
                 integrityLine + "\n" +
-                scrapLine + "\n" +
-                stationStorageLine + "\n" +
                 autoRepairLine + "\n" +
-                dockingLine + "\n";
+                stationStorageLine + "\n" +
+                scrapLine + "\n" +
+                shipHpLine + "\n" +
+                dockingLine + "\n" +
+                podsLine + "\n";
                 return;
             }
 
@@ -114,6 +146,7 @@ namespace FallingStar.UI
             {
                 hudText.text =
                 stateLine + "\n" +
+                starIndexLine + "\n" +
                 starLine + "\n" +
                 integrityLine + "\n" +
                 scrapLine + "\n" +

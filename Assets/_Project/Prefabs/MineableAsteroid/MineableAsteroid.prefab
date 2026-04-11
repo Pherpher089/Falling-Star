@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 4886786342413739590}
   - component: {fileID: 5733907502585628897}
   - component: {fileID: 5530524619497546337}
+  - component: {fileID: -7454061519818502886}
   m_Layer: 0
-  m_Name: Asteroid
+  m_Name: MineableAsteroid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -157,3 +158,16 @@ MonoBehaviour:
   scrapToSpawn: 3
   ship: {fileID: 0}
   scrapPickupPrefab: {fileID: 213179889901816325, guid: f4b8e84610c1a954ba773d078acc1cd7, type: 3}
+--- !u!114 &-7454061519818502886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631795117428181576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e467e4e4a8881ed4a8b3876b3756bf1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FallingStar.Expedition.AsteroidDamageSource
+  collisionDamage: 8
